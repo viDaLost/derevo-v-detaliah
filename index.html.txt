@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дерево в деталях — Укладка и реставрация деревянных полов | КМВ, выезд по КЧР</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .animate-fade-in { animation: fadeIn 1s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header ->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <i class="fas fa-tree text-amber-800 text-2xl mr-2"></i>
+                <h1 class="text-xl font-bold text-amber-900">Дерево в деталях</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#services" class="text-gray-700 hover:text-amber-700 transition">Услуги</a>
+                <a href="#gallery" class="text-gray-700 hover:text-amber-700 transition">Галерея</a>
+                <a href="#reviews" class="text-gray-700 hover:text-amber-700 transition">Отзывы</a>
+                <a href="#contact" class="text-gray-700 hover:text-amber-700 transition">Контакты</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-700 focus:outline-none" aria-label="Меню">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-2 px-4 shadow-lg">
+            <a href="#services" class="block py-2 text-gray-700 hover:text-amber-700 transition">Услуги</a>
+            <a href="#gallery" class="block py-2 text-gray-700 hover:text-amber-700 transition">Галерея</a>
+            <a href="#reviews" class="block py-2 text-gray-700 hover:text-amber-700 transition">Отзывы</a>
+            <a href="#contact" class="block py-2 text-gray-700 hover:text-amber-700 transition">Контакты</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero h-screen flex items-center justify-center text-white pt-16">
+        <div class="container mx-auto px-4 text-center animate-fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Профессиональная укладка и реставрация деревянных полов</h1>
+            <p class="text-xl md:text-2xl mb-3">10+ лет опыта</p>
+            <p class="text-xl md:text-2xl mb-3">Работаем по КМВ</p>
+            <p class="text-lg md:text-xl mb-8 opacity-90">Возможен выезд по КЧР</p>
+            <a href="tel:+79188098466" class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block">
+                Бесплатная консультация
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-900 mb-4">Наши услуги</h2>
+
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-amber-100 flex items-center justify-center">
+                        <i class="fas fa-ruler-combined text-6xl text-amber-700"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-amber-800">Укладка деревянных полов</h3>
+                        <p class="text-gray-600">Паркет, массивная и инженерная доска, ламинат, кварц-венил — с гарантией качества.</p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i><span>Традиционные и художественные схемы</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i><span>Качественные материалы</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i><span>Соблюдение технологии</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-amber-100 flex items-center justify-center">
+                        <i class="fas fa-broom text-6xl text-amber-700"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-amber-800">Реставрация и циклевка</h3>
+                        <p class="text-gray-600">Возвращаем полам вид «как новые», сохраняя характер древесины.</p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i><span>Удаление царапин и дефектов</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i><span>Шлифовка и полировка</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i><span>Защитные покрытия</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-amber-100 flex items-center justify-center">
+                        <i class="fas fa-paint-roller text-6xl text-amber-700"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-amber-800">Покрытие и обработка</h3>
+                        <p class="text-gray-600">Масла, лаки, воски. Экологичные составы, тонировка и браширование.</p>
+                        <ul class="mt-4 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i><span>Продление срока службы</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i><span>Декоративные эффекты</span></li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i><span>Бережно к здоровью</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery: только загруженные фото -->
+    <section id="gallery" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-900 mb-4">Галерея работ</h2>
+            
+
+            <!-- Укладка доски и паркета -->
+            <h3 class="text-2xl md:text-3xl font-bold text-amber-900 mb-6">Укладка доски и паркета</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- Ожидаются файлы ukladka-01.jpg … ukladka-07.jpg рядом с index.html -->
+                <img src="ukladka-01.jpg" alt="Укладка — фото 1" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="ukladka-02.jpg" alt="Укладка — фото 2" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="ukladka-03.jpg" alt="Укладка — фото 3" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="ukladka-04.jpg" alt="Укладка — фото 4" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="ukladka-05.jpg" alt="Укладка — фото 5" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="ukladka-06.jpg" alt="Укладка — фото 6" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="ukladka-07.jpg" alt="Укладка — фото 7" class="w-full h-64 object-cover rounded-lg shadow-md">
+            </div>
+
+            <!-- Реставрация и циклевка полов -->
+            <h3 class="text-2xl md:text-3xl font-bold text-amber-900 mb-6">Реставрация и циклевка полов</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Ожидаются файлы restavr-01.jpg … restavr-10.jpg рядом с index.html -->
+                <img src="restavr-01.jpg" alt="Реставрация — фото 1" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="restavr-02.jpg" alt="Реставрация — фото 2" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="restavr-03.jpg" alt="Реставрация — фото 3" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="restavr-04.jpg" alt="Реставрация — фото 4" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="restavr-05.jpg" alt="Реставрация — фото 5" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="restavr-06.jpg" alt="Реставрация — фото 6" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="restavr-07.jpg" alt="Реставрация — фото 7" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="restavr-08.jpg" alt="Реставрация — фото 8" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="restavr-09.jpg" alt="Реставрация — фото 9" class="w-full h-64 object-cover rounded-lg shadow-md">
+                <img src="restavr-10.jpg" alt="Реставрация — фото 10" class="w-full h-64 object-cover rounded-lg shadow-md">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-900 mb-16">Отзывы наших клиентов</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-amber-700 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Анна Смирнова</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">«Работа выполнена безупречно, сроки соблюдены. Пол выглядит потрясающе!»</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-amber-700 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Иван Петров</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">«Реставрация дубового пола превзошла ожидания: аккуратно, без пыли, результат — как новый.»</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-amber-700 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Елена Козлова</h4>
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">«Прошло 2 года — полы как новые. Большое спасибо за советы по уходу!»</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-900 mb-16">Контакты</h2>
+            
+            <div class="flex flex-col lg:flex-row">
+                <!-- Левая колонка -->
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10">
+                    <div class="bg-white p-8 rounded-lg shadow-md h-full">
+                        <h3 class="text-2xl font-bold mb-3 text-amber-800">Свяжитесь через наши соцсети или по телефону</h3>
+                        <p class="text-gray-600 mb-8">Работаем по КМВ, возможен выезд по КЧР.</p>
+
+                        <div class="grid grid-cols-1 gap-4">
+                            <a href="https://t.me/vannekst" target="_blank" rel="noopener" class="w-full bg-[#229ED9] hover:opacity-90 text-white font-bold py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+                                <i class="fab fa-telegram-plane mr-3"></i> Telegram
+                            </a>
+                            <a href="https://wa.me/79188098466" target="_blank" rel="noopener" class="w-full bg-green-600 hover:opacity-90 text-white font-bold py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+                                <i class="fab fa-whatsapp mr-3"></i> WhatsApp
+                            </a>
+                            <a href="tel:+79188098466" class="w-full bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+                                <i class="fas fa-phone mr-3"></i> Телефон
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Правая колонка -->
+                <div class="lg:w-1/2">
+                    <div class="bg-white p-8 rounded-lg shadow-md h-full">
+                        <h3 class="text-2xl font-bold mb-6 text-amber-800">Наши контакты</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-amber-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Регион</h4>
+                                    <p class="text-gray-600">КМВ (выезд по КЧР)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-amber-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Телефон</h4>
+                                    <p class="text-gray-600">+7 (918) 809-84-66</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-amber-700"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Режим работы</h4>
+                                    <p class="text-gray-600">Ежедневно: 10:00 — 19:00</p>
+                                    <p class="text-gray-600">Суббота, Воскресенье: выходной</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <h4 class="font-bold text-gray-800 mb-4">Мы в социальных сетях</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://t.me/derevo_v_detalyakh" target="_blank" rel="noopener" class="bg-gray-200 hover:bg-amber-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300" aria-label="Telegram канал">
+                                    <i class="fab fa-telegram-plane"></i>
+                                </a>
+                                <a href="https://t.me/vannekst" target="_blank" rel="noopener" class="bg-gray-200 hover:bg-amber-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300" aria-label="Telegram">
+                                    <i class="fab fa-telegram"></i>
+                                </a>
+                                <a href="https://wa.me/79188098466" target="_blank" rel="noopener" class="bg-gray-200 hover:bg-amber-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300" aria-label="WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="tel:+79188098466" class="bg-gray-200 hover:bg-amber-600 hover:text-white w-10 h-10 rounded-full flex items-center justify-center transition duration-300" aria-label="Позвонить">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="h-96 w-full">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d709110.8209!2d42.6!3d44.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sКавказские%20Минеральные%20Воды!2s!5e0!3m2!1sru!2sru!4v1620000000000!5m2!1sru!2sru"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <i class="fas fa-tree text-amber-500 text-2xl mr-2"></i>
+                        <h2 class="text-xl font-bold">Дерево в деталях</h2>
+                    </div>
+                    <p class="text-gray-400 mt-2">Укладка и реставрация деревянных полов • КМВ • Выезд по КЧР</p>
+                </div>
+                
+                <div class="flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0 text-center md:text-left">
+                    <div>
+                        <h3 class="font-bold mb-2">Услуги</h3>
+                        <ul class="space-y-1">
+                            <li><span class="text-gray-400">Укладка паркета</span></li>
+                            <li><span class="text-gray-400">Реставрация полов</span></li>
+                            <li><span class="text-gray-400">Циклевка</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold mb-2">Компания</h3>
+                        <ul class="space-y-1">
+                            <li><a href="#reviews" class="text-gray-400 hover:text-amber-500 transition">Отзывы</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-amber-500 transition">Контакты</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-bold mb-2">Контакты</h3>
+                        <ul class="space-y-1">
+                            <li><a href="tel:+79188098466" class="text-gray-400 hover:text-amber-500 transition">+7 (918) 809-84-66</a></li>
+                            <li><span class="text-gray-400">КМВ и выезд по КЧР</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 Дерево в деталях. Все права защищены.</p>
+                <div class="flex space-x-6">
+                    <a href="https://t.me/derevo_v_detalyakh" target="_blank" rel="noopener" class="text-gray-400 hover:text-amber-500 transition" aria-label="Telegram канал"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://t.me/vannekst" target="_blank" rel="noopener" class="text-gray-400 hover:text-amber-500 transition" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/79188098466" target="_blank" rel="noopener" class="text-gray-400 hover:text-amber-500 transition" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="tel:+79188098466" class="text-gray-400 hover:text-amber-500 transition" aria-label="Позвонить"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating action button -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <a href="tel:+79188098466" class="bg-amber-600 hover:bg-amber-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition duration-300" aria-label="Позвонить">
+            <i class="fas fa-phone-alt text-xl"></i>
+        </a>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (!target) return;
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
