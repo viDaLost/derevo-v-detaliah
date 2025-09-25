@@ -35,6 +35,7 @@
         #mobile-drawer {
             transform: translateX(110%);
             transition: transform .35s cubic-bezier(.2,.9,.2,1);
+            background: white;
         }
         #mobile-drawer.open {
             transform: translateX(0);
@@ -114,23 +115,44 @@
             border-color: rgba(245,158,11,0.15);
         }
 
-        /* Gallery: masonry via columns */
-        .masonry {
-            column-count: 1;
-            column-gap: 1rem;
-        }
-        @media(min-width:640px){ .masonry { column-count: 2; } }
-        @media(min-width:1024px){ .masonry { column-count: 3; } }
-        .masonry img {
+        /* Gallery: swiper instead of masonry */
+        .gallery-swiper {
             width: 100%;
-            display: block;
-            margin-bottom: 1rem;
-            transition: transform .35s, box-shadow .35s;
-            border-radius: .6rem;
+            height: 500px;
         }
-        .masonry img:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 18px 40px rgba(2,6,23,0.12);
+        .gallery-swiper .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+        .gallery-swiper .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .gallery-thumbs {
+            height: 100px;
+            box-sizing: border-box;
+            padding: 10px 0;
+        }
+        .gallery-thumbs .swiper-slide {
+            width: 25%;
+            height: 100%;
+            opacity: 0.4;
+        }
+        .gallery-thumbs .swiper-slide-thumb-active {
+            opacity: 1;
+        }
+        .gallery-thumbs .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
         }
 
         /* Lightbox */
@@ -287,7 +309,7 @@
                     </div>
                     <div class="p-6 hover-border">
                         <h3 class="text-xl font-bold mb-3 text-amber-800">Реставрация и циклевка</h3>
-                        <p class="text-gray-600">Возвращаем полам вид «как новые», сохраняя характер древесины.</p>
+                        <p class="text-gray-600">Возвращаем полам вид «как новые», сохраняя характер древесина.</p>
                         <ul class="mt-4 space-y-2 text-gray-600">
                             <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i>Удаление царапин и дефектов</li>
                             <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i>Шлифовка и полировка</li>
@@ -322,30 +344,121 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-900 mb-8">Галерея работ</h2>
 
-            <h3 class="text-2xl md:text-3xl font-bold text-amber-900 mb-6">Укладка доски и паркета</h3>
-            <div class="masonry mb-8" id="gallery-masonry">
-                <!-- Images expected to exist in the same folder -->
-                <img src="ukladka-01.jpg" alt="Укладка — фото 1" class="gallery-item" data-index="0">
-                <img src="ukladka-02.jpg" alt="Укладка — фото 2" class="gallery-item" data-index="1">
-                <img src="ukladka-03.jpg" alt="Укладка — фото 3" class="gallery-item" data-index="2">
-                <img src="ukladka-04.jpg" alt="Укладка — фото 4" class="gallery-item" data-index="3">
-                <img src="ukladka-05.jpg" alt="Укладка — фото 5" class="gallery-item" data-index="4">
-                <img src="ukladka-06.jpg" alt="Укладка — фото 6" class="gallery-item" data-index="5">
-                <img src="ukladka-07.jpg" alt="Укладка — фото 7" class="gallery-item" data-index="6">
+            <div class="swiper gallery-swiper mb-4">
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <img src="ukladka-01.jpg" alt="Укладка — фото 1">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="ukladka-02.jpg" alt="Укладка — фото 2">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="ukladka-03.jpg" alt="Укладка — фото 3">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="ukladka-04.jpg" alt="Укладка — фото 4">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="ukladka-05.jpg" alt="Укладка — фото 5">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="ukladka-06.jpg" alt="Укладка — фото 6">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="ukladka-07.jpg" alt="Укладка — фото 7">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-01.jpg" alt="Реставрация — фото 1">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-02.jpg" alt="Реставрация — фото 2">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-03.jpg" alt="Реставрация — фото 3">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-04.jpg" alt="Реставрация — фото 4">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-05.jpg" alt="Реставрация — фото 5">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-06.jpg" alt="Реставрация — фото 6">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-07.jpg" alt="Реставрация — фото 7">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-08.jpg" alt="Реставрация — фото 8">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-09.jpg" alt="Реставрация — фото 9">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-10.jpg" alt="Реставрация — фото 10">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
 
-            <h3 class="text-2xl md:text-3xl font-bold text-amber-900 mb-6">Реставрация и циклевка полов</h3>
-            <div class="masonry" id="gallery-masonry-2">
-                <img src="restavr-01.jpg" alt="Реставрация — фото 1" class="gallery-item" data-index="7">
-                <img src="restavr-02.jpg" alt="Реставрация — фото 2" class="gallery-item" data-index="8">
-                <img src="restavr-03.jpg" alt="Реставрация — фото 3" class="gallery-item" data-index="9">
-                <img src="restavr-04.jpg" alt="Реставрация — фото 4" class="gallery-item" data-index="10">
-                <img src="restavr-05.jpg" alt="Реставрация — фото 5" class="gallery-item" data-index="11">
-                <img src="restavr-06.jpg" alt="Реставрация — фото 6" class="gallery-item" data-index="12">
-                <img src="restavr-07.jpg" alt="Реставрация — фото 7" class="gallery-item" data-index="13">
-                <img src="restavr-08.jpg" alt="Реставрация — фото 8" class="gallery-item" data-index="14">
-                <img src="restavr-09.jpg" alt="Реставрация — фото 9" class="gallery-item" data-index="15">
-                <img src="restavr-10.jpg" alt="Реставрация — фото 10" class="gallery-item" data-index="16">
+            <div class="swiper gallery-thumbs">
+                <div class="swiper-wrapper">
+                    <!-- Thumbnails -->
+                    <div class="swiper-slide">
+                        <img src="ukladka-01.jpg" alt="Укладка — фото 1">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="ukladka-02.jpg" alt="Укладка — фото 2">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="ukladka-03.jpg" alt="Укладка — фото 3">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="ukladka-04.jpg" alt="Укладка — фото 4">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="ukladka-05.jpg" alt="Укладка — фото 5">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="ukladka-06.jpg" alt="Укладка — фото 6">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="ukladka-07.jpg" alt="Укладка — фото 7">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-01.jpg" alt="Реставрация — фото 1">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-02.jpg" alt="Реставрация — фото 2">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-03.jpg" alt="Реставрация — фото 3">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-04.jpg" alt="Реставрация — фото 4">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-05.jpg" alt="Реставрация — фото 5">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-06.jpg" alt="Реставрация — фото 6">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-07.jpg" alt="Реставрация — фото 7">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-08.jpg" alt="Реставрация — фото 8">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-09.jpg" alt="Реставрация — фото 9">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="restavr-10.jpg" alt="Реставрация — фото 10">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -725,6 +838,25 @@
                         768: { slidesPerView: 2 },
                         1024: { slidesPerView: 3 }
                     }
+                });
+
+                // Initialize gallery swiper
+                const galleryThumbs = new Swiper('.gallery-thumbs', {
+                    spaceBetween: 10,
+                    slidesPerView: 4,
+                    freeMode: true,
+                    watchSlidesProgress: true,
+                });
+                
+                const galleryTop = new Swiper('.gallery-swiper', {
+                    spaceBetween: 10,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    thumbs: {
+                        swiper: galleryThumbs,
+                    },
                 });
             }
         })();
