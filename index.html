@@ -1,876 +1,1212 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Дерево в деталях — Укладка и реставрация деревянных полов | КМВ, выезд по КЧР</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Дерево в деталях — укладка и реставрация деревянных полов в КМВ</title>
+  <meta name="description" content="Укладка, циклёвка, реставрация и защитная обработка деревянных полов в КМВ. Более 10 лет опыта, выезд по КЧР.">
+  <meta name="theme-color" content="#1f2a24">
+  <meta name="color-scheme" content="light">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="Дерево в деталях — деревянные полы в КМВ">
+  <meta property="og:description" content="Укладка, реставрация и обработка деревянных полов. Более 10 лет опыта.">
+  <style>
+    :root {
+      --bg: #f6f2ea;
+      --surface: #fffdf8;
+      --surface-strong: #ffffff;
+      --surface-dark: #1f2a24;
+      --text: #20231f;
+      --muted: #696b64;
+      --muted-dark: #d7d9d3;
+      --brand: #9b5e2f;
+      --brand-strong: #79431f;
+      --brand-soft: #ead7c4;
+      --accent: #c88b4a;
+      --success: #2f6b4f;
+      --warning: #9a681e;
+      --error: #a33b35;
+      --border: #ded7cb;
+      --border-dark: rgba(255, 255, 255, .16);
+      --shadow-sm: 0 8px 24px rgba(53, 43, 31, .07);
+      --shadow-md: 0 22px 60px rgba(53, 43, 31, .12);
+      --radius-sm: .75rem;
+      --radius-md: 1.25rem;
+      --radius-lg: 2rem;
+      --container: 74rem;
+      --header-height: 4.75rem;
+      --space-1: .375rem;
+      --space-2: .625rem;
+      --space-3: 1rem;
+      --space-4: 1.5rem;
+      --space-5: 2rem;
+      --space-6: 3rem;
+      --space-7: 4.5rem;
+      --space-8: 7rem;
+      --ease: cubic-bezier(.2, .75, .2, 1);
+    }
 
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 1rem); }
+    body {
+      margin: 0;
+      min-width: 20rem;
+      overflow-x: clip;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.menu-open, body.dialog-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    button, input, textarea, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 600;
+      line-height: 1.06;
+      letter-spacing: -.025em;
+      text-wrap: balance;
+    }
+    p { text-wrap: pretty; }
+    section { scroll-margin-top: calc(var(--header-height) + 1rem); }
 
-    <!-- Swiper (Отзывы карусель) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    .skip-link {
+      position: fixed;
+      top: .75rem;
+      left: .75rem;
+      z-index: 1000;
+      transform: translateY(-160%);
+      padding: .75rem 1rem;
+      border-radius: .5rem;
+      background: var(--surface-dark);
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .skip-link:focus { transform: translateY(0); }
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    :focus-visible {
+      outline: 3px solid #f0ad62;
+      outline-offset: 3px;
+    }
 
-    <style>
-        /* --- Custom styles beyond Tailwind --- */
+    .container {
+      width: min(100% - clamp(2rem, 6vw, 5rem), var(--container));
+      margin-inline: auto;
+    }
+    .section { padding-block: clamp(4.5rem, 9vw, var(--space-8)); }
+    .section--surface { background: var(--surface); }
+    .section--dark { background: var(--surface-dark); color: white; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: 1rem;
+      color: var(--brand-strong);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .13em;
+      line-height: 1.3;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      width: 1.75rem;
+      height: 1px;
+      background: currentColor;
+      content: "";
+    }
+    .section--dark .eyebrow { color: #e9bd8b; }
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(17rem, .55fr);
+      align-items: end;
+      gap: 2rem;
+      margin-bottom: clamp(2rem, 5vw, 4rem);
+    }
+    .section-heading h2 {
+      max-width: 16ch;
+      margin-bottom: 0;
+      font-size: clamp(2.1rem, 4.5vw, 4.25rem);
+    }
+    .section-heading p {
+      max-width: 40rem;
+      margin-bottom: .25rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.8vw, 1.125rem);
+    }
+    .section--dark .section-heading p { color: var(--muted-dark); }
 
-        /* Header glass effect */
-        header.site-header {
-            transition: background-color .35s ease, box-shadow .35s ease, transform .25s ease;
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            background-color: rgba(255,255,255,0.08); /* transparent glass */
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-        header.site-header.scrolled {
-            background-color: #ffffff; /* solid */
-            box-shadow: 0 6px 20px rgba(15,23,42,0.08);
-            border-bottom-color: rgba(0,0,0,0.06);
-        }
-        /* Mobile offcanvas */
-        #mobile-drawer {
-            transform: translateX(110%);
-            transition: transform .35s cubic-bezier(.2,.9,.2,1);
-            background: white;
-        }
-        #mobile-drawer.open {
-            transform: translateX(0);
-        }
-        /* Overlay for drawer */
-        .drawer-overlay {
-            background: rgba(0,0,0,0.35);
-            backdrop-filter: blur(4px);
-        }
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: var(--header-height);
+      border-bottom: 1px solid transparent;
+      transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .site-header.is-scrolled,
+    .site-header:has(.mobile-menu:not([hidden])) {
+      border-color: rgba(39, 42, 36, .1);
+      background: rgba(255, 253, 248, .94);
+      box-shadow: 0 8px 28px rgba(53, 43, 31, .08);
+      backdrop-filter: blur(16px);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: var(--header-height);
+      gap: 1rem;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      min-width: 0;
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: -.02em;
+      text-decoration: none;
+    }
+    .brand-mark {
+      display: grid;
+      flex: 0 0 auto;
+      width: 2.5rem;
+      height: 2.5rem;
+      place-items: center;
+      border: 1px solid rgba(121, 67, 31, .2);
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--brand-strong);
+      box-shadow: var(--shadow-sm);
+    }
+    .brand-mark svg { width: 1.4rem; height: 1.4rem; }
+    .brand-text { white-space: nowrap; }
+    .desktop-nav { display: none; align-items: center; gap: clamp(1.1rem, 2.7vw, 2.25rem); }
+    .desktop-nav a {
+      position: relative;
+      color: #454840;
+      font-size: .94rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .desktop-nav a::after {
+      position: absolute;
+      right: 0;
+      bottom: -.5rem;
+      left: 0;
+      height: 2px;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: var(--brand);
+      content: "";
+      transition: transform .2s ease;
+    }
+    .desktop-nav a:hover::after, .desktop-nav a:focus-visible::after { transform: scaleX(1); }
+    .header-actions { display: flex; align-items: center; gap: .65rem; }
+    .header-phone { display: none; }
+    .menu-toggle {
+      display: inline-grid;
+      width: 2.875rem;
+      height: 2.875rem;
+      place-items: center;
+      border: 1px solid var(--border);
+      border-radius: .8rem;
+      background: var(--surface-strong);
+      color: var(--text);
+      cursor: pointer;
+    }
+    .menu-toggle svg { width: 1.35rem; height: 1.35rem; }
 
-        /* Hero parallax background controlled by JS */
-        .hero-bg {
-            background-size: cover;
-            background-position: center;
-        }
+    .mobile-menu[hidden], .menu-overlay[hidden] { display: none; }
+    .menu-overlay {
+      position: fixed;
+      inset: var(--header-height) 0 0;
+      z-index: 98;
+      background: rgba(20, 25, 21, .48);
+      backdrop-filter: blur(4px);
+    }
+    .mobile-menu {
+      position: fixed;
+      top: var(--header-height);
+      right: 0;
+      z-index: 99;
+      display: flex;
+      width: min(92vw, 24rem);
+      height: calc(100dvh - var(--header-height));
+      flex-direction: column;
+      padding: 1.25rem;
+      border-left: 1px solid var(--border);
+      background: var(--surface);
+      box-shadow: -18px 28px 60px rgba(30, 26, 20, .16);
+      animation: menu-in .25s var(--ease) both;
+    }
+    .mobile-menu nav { display: grid; gap: .25rem; }
+    .mobile-menu nav a {
+      display: flex;
+      min-height: 3.25rem;
+      align-items: center;
+      padding-inline: .85rem;
+      border-radius: .75rem;
+      font-size: 1.08rem;
+      font-weight: 750;
+      text-decoration: none;
+    }
+    .mobile-menu nav a:hover { background: #eee7dc; }
+    .mobile-menu-contact {
+      display: grid;
+      gap: .75rem;
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    @keyframes menu-in { from { transform: translateX(100%); } }
 
-        /* Staggered fade-in */
-        .stagger {
-            opacity: 0;
-            transform: translateY(10px);
-            animation: appear .7s forwards ease;
-        }
-        .stagger.delay-1 { animation-delay: .15s; }
-        .stagger.delay-2 { animation-delay: .35s; }
-        .stagger.delay-3 { animation-delay: .6s; }
-        @keyframes appear {
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .button {
+      position: relative;
+      display: inline-flex;
+      min-height: 3.25rem;
+      align-items: center;
+      justify-content: center;
+      gap: .65rem;
+      padding: .78rem 1.2rem;
+      border: 1px solid transparent;
+      border-radius: .75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button:active { transform: translateY(0); }
+    .button:disabled, .button[aria-disabled="true"] {
+      transform: none;
+      opacity: .48;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    .button.is-loading { color: transparent; pointer-events: none; }
+    .button.is-loading::after {
+      position: absolute;
+      width: 1.1rem;
+      height: 1.1rem;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      color: white;
+      content: "";
+      animation: button-spin .7s linear infinite;
+    }
+    @keyframes button-spin { to { transform: rotate(1turn); } }
+    .button--primary {
+      background: var(--brand-strong);
+      color: white;
+      box-shadow: 0 12px 24px rgba(121, 67, 31, .22);
+    }
+    .button--primary:hover { background: #643519; box-shadow: 0 15px 32px rgba(121, 67, 31, .28); }
+    .button--secondary { border-color: var(--border); background: rgba(255, 255, 255, .76); color: var(--text); }
+    .button--secondary:hover { border-color: #b7aa98; background: white; }
+    .button--light { background: white; color: var(--surface-dark); }
+    .button--ghost-light { border-color: rgba(255, 255, 255, .3); color: white; }
+    .button svg { width: 1.1rem; height: 1.1rem; }
 
-        /* Button double frame & glow */
-        .glow-btn {
-            position: relative;
-            z-index: 0;
-            overflow: visible;
-        }
-        .glow-btn::before {
-            content: "";
-            position: absolute;
-            inset: -3px;
-            border-radius: 999px;
-            background: linear-gradient(90deg, rgba(250,204,21,0.18), rgba(245,158,11,0.08));
-            filter: blur(8px);
-            z-index: -2;
-            opacity: 0.9;
-        }
-        .glow-btn::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 999px;
-            padding: 2px;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            background: linear-gradient(90deg,#FFB547,#FF8A00);
-            z-index: -1;
-            opacity: .18;
-        }
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: min(57rem, 100svh);
+      align-items: center;
+      padding-top: calc(var(--header-height) + 2rem);
+      padding-bottom: clamp(3.5rem, 7vw, 6rem);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(200, 139, 74, .16), transparent 27rem),
+        linear-gradient(120deg, #f8f3ea 0%, #f3eee4 52%, #e8e0d2 100%);
+      content: "";
+    }
+    .hero::after {
+      position: absolute;
+      top: 10rem;
+      right: -6rem;
+      z-index: -1;
+      width: 20rem;
+      aspect-ratio: 1;
+      border: 1px solid rgba(121, 67, 31, .12);
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 2.5rem rgba(255, 255, 255, .12), inset 0 0 0 5.5rem rgba(121, 67, 31, .035);
+      content: "";
+    }
+    .hero-grid {
+      display: grid;
+      align-items: center;
+      gap: clamp(2.5rem, 7vw, 6rem);
+    }
+    .hero-copy { max-width: 44rem; }
+    .hero h1 {
+      max-width: 13ch;
+      margin-bottom: 1.4rem;
+      font-size: clamp(3rem, 8.2vw, 6.9rem);
+      letter-spacing: -.055em;
+    }
+    .hero-lead {
+      max-width: 38rem;
+      margin-bottom: 2rem;
+      color: #555950;
+      font-size: clamp(1.08rem, 2vw, 1.32rem);
+      line-height: 1.55;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; }
+    .hero-trust {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 38rem;
+      gap: .75rem;
+      margin: 2.25rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .hero-trust li {
+      min-width: 0;
+      padding-top: .9rem;
+      border-top: 1px solid rgba(74, 67, 57, .2);
+    }
+    .hero-trust strong { display: block; color: var(--brand-strong); font-size: clamp(1.15rem, 2.5vw, 1.6rem); line-height: 1.1; }
+    .hero-trust span { display: block; margin-top: .35rem; color: var(--muted); font-size: .82rem; line-height: 1.35; }
+    .hero-visual { position: relative; min-width: 0; }
+    .hero-photo {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 1.2rem 5rem 1.2rem 1.2rem;
+      background: #dcd4c8;
+      box-shadow: var(--shadow-md);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-photo::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 48%, rgba(22, 26, 22, .45));
+      content: "";
+    }
+    .hero-note {
+      position: absolute;
+      right: clamp(-1rem, -2vw, -2rem);
+      bottom: clamp(1rem, 4vw, 3rem);
+      width: min(19rem, 80%);
+      padding: 1.15rem;
+      border: 1px solid rgba(255, 255, 255, .5);
+      border-radius: var(--radius-md);
+      background: rgba(255, 253, 248, .93);
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(12px);
+    }
+    .hero-note strong { display: block; margin-bottom: .35rem; font-family: Georgia, serif; font-size: 1.2rem; }
+    .hero-note p { margin-bottom: 0; color: var(--muted); font-size: .9rem; line-height: 1.45; }
 
-        /* Services 3D hover */
-        .service-card {
-            transition: transform .45s cubic-bezier(.2,.9,.2,1), box-shadow .35s;
-            transform-origin: center bottom;
-        }
-        .service-card:hover {
-            transform: perspective(800px) translateY(-8px) rotateX(2deg) scale(1.04);
-            box-shadow: 0 18px 40px rgba(15,23,42,0.12);
-        }
-        .icon-gradient {
-            background: linear-gradient(135deg,#F59E0B,#F97316);
-            color: white;
-        }
-        .service-card .hover-border {
-            transition: box-shadow .25s, border-color .25s;
-            border: 1px solid transparent;
-        }
-        .service-card:hover .hover-border {
-            border-color: rgba(245,158,11,0.15);
-        }
+    .service-grid { display: grid; gap: 1rem; }
+    .service-card {
+      position: relative;
+      display: grid;
+      min-height: 100%;
+      align-content: start;
+      padding: clamp(1.35rem, 3.2vw, 2rem);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface-strong);
+      box-shadow: var(--shadow-sm);
+      transition: transform .22s var(--ease), border-color .22s ease, box-shadow .22s ease;
+    }
+    .service-number {
+      display: grid;
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: 2.5rem;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--brand-soft);
+      color: var(--brand-strong);
+      font-family: Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+    .service-card h3 { margin-bottom: .8rem; font-size: clamp(1.45rem, 3vw, 2rem); }
+    .service-card > p { margin-bottom: 1.25rem; color: var(--muted); }
+    .feature-list { display: grid; gap: .7rem; margin: 0; padding: 0; list-style: none; }
+    .feature-list li { position: relative; padding-left: 1.4rem; color: #484b44; font-size: .94rem; }
+    .feature-list li::before {
+      position: absolute;
+      top: .65em;
+      left: 0;
+      width: .45rem;
+      height: .45rem;
+      border-radius: 50%;
+      background: var(--accent);
+      content: "";
+    }
 
-        /* Gallery: swiper instead of masonry */
-        .gallery-swiper {
-            width: 100%;
-            height: 500px;
-        }
-        .gallery-swiper .swiper-slide {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-        }
-        .gallery-swiper .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-        .gallery-thumbs {
-            height: 100px;
-            box-sizing: border-box;
-            padding: 10px 0;
-        }
-        .gallery-thumbs .swiper-slide {
-            width: 25%;
-            height: 100%;
-            opacity: 0.4;
-        }
-        .gallery-thumbs .swiper-slide-thumb-active {
-            opacity: 1;
-        }
-        .gallery-thumbs .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 4px;
-        }
+    .process-layout { display: grid; gap: 2rem; }
+    .process-intro {
+      position: relative;
+      min-height: 24rem;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      background: #2a372f;
+      color: white;
+      isolation: isolate;
+    }
+    .process-intro::before {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background: linear-gradient(130deg, rgba(31, 42, 36, .95), rgba(31, 42, 36, .55)), url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1200&q=80') center / cover;
+      content: "";
+    }
+    .process-intro::after {
+      position: absolute;
+      right: -5rem;
+      bottom: -5rem;
+      z-index: -1;
+      width: 17rem;
+      aspect-ratio: 1;
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 2rem rgba(255, 255, 255, .03), inset 0 0 0 4rem rgba(255, 255, 255, .025);
+      content: "";
+    }
+    .process-intro-content { display: flex; min-height: inherit; flex-direction: column; justify-content: flex-end; padding: clamp(1.5rem, 4vw, 3rem); }
+    .process-intro h2 { max-width: 12ch; margin-bottom: 1rem; font-size: clamp(2.2rem, 5vw, 4.25rem); }
+    .process-intro p { max-width: 31rem; margin-bottom: 0; color: #e3e5df; }
+    .process-steps { display: grid; align-content: start; border-top: 1px solid var(--border); }
+    .process-step {
+      display: grid;
+      grid-template-columns: 3rem minmax(0, 1fr);
+      gap: 1rem;
+      padding-block: 1.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .process-step span { color: var(--brand); font-family: Georgia, serif; font-size: 1.15rem; font-weight: 700; }
+    .process-step h3 { margin-bottom: .4rem; font-family: inherit; font-size: 1.05rem; letter-spacing: -.01em; }
+    .process-step p { margin-bottom: 0; color: var(--muted); font-size: .94rem; }
 
-        /* Lightbox */
-        .lightbox {
-            position: fixed;
-            inset: 0;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 70;
-            background: rgba(3,7,18,0.75);
-        }
-        .lightbox.open { display: flex; }
-        .lightbox img { max-height: 85vh; max-width: 92vw; border-radius: 8px; }
+    .gallery-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+    .gallery-hint { margin: 0; color: var(--muted); font-size: .9rem; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+    .gallery-card {
+      position: relative;
+      min-width: 0;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      border-radius: var(--radius-sm);
+      background: #ded6c9;
+      cursor: zoom-in;
+      aspect-ratio: 4 / 3;
+    }
+    .gallery-card:nth-child(5n + 1) { grid-column: span 2; aspect-ratio: 16 / 9; }
+    .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s var(--ease), filter .3s ease; }
+    .gallery-card::after {
+      position: absolute;
+      inset: auto 0 0;
+      height: 55%;
+      background: linear-gradient(transparent, rgba(18, 23, 19, .72));
+      content: "";
+      pointer-events: none;
+    }
+    .gallery-caption {
+      position: absolute;
+      right: .9rem;
+      bottom: .8rem;
+      left: .9rem;
+      z-index: 1;
+      color: white;
+      font-size: .82rem;
+      font-weight: 800;
+      line-height: 1.25;
+      text-align: left;
+    }
+    .gallery-card.is-missing::before {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      background: linear-gradient(135deg, #ded6c9, #cdbda9);
+      color: #5f5142;
+      content: attr(data-label);
+      font-weight: 700;
+      text-align: center;
+    }
+    .gallery-card.is-missing img { opacity: 0; }
 
-        /* Reviews - stars animation */
-        .stars i { transform: translateY(6px); opacity: 0; animation: starPop .6s forwards ease; }
-        .stars i:nth-child(1){ animation-delay:.05s } .stars i:nth-child(2){ animation-delay:.1s }
-        .stars i:nth-child(3){ animation-delay:.15s } .stars i:nth-child(4){ animation-delay:.2s }
-        .stars i:nth-child(5){ animation-delay:.25s }
-        @keyframes starPop { to { transform: translateY(0); opacity: 1; } }
+    .review-grid { display: grid; gap: 1rem; }
+    .review-card {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      padding: clamp(1.35rem, 3vw, 2rem);
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, .055);
+    }
+    .review-stars { margin-bottom: 1rem; color: #e9bd8b; letter-spacing: .08em; }
+    .review-card blockquote { flex: 1; margin: 0 0 1.6rem; font-family: Georgia, serif; font-size: clamp(1.2rem, 2.2vw, 1.55rem); line-height: 1.45; }
+    .review-author { display: flex; align-items: center; gap: .8rem; }
+    .review-avatar { display: grid; width: 2.75rem; height: 2.75rem; place-items: center; border-radius: 50%; background: #e8d6c2; color: var(--brand-strong); font-weight: 900; }
+    .review-author strong { display: block; line-height: 1.2; }
+    .review-author span { color: var(--muted-dark); font-size: .83rem; }
 
-        /* Contact left tree texture (subtle) */
-        .wood-pattern {
-            background-image:
-                linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0) 100%),
-                repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 12px);
-            background-size: cover;
-            background-blend-mode: overlay;
-        }
+    .contact-layout { display: grid; gap: 1rem; }
+    .contact-card {
+      padding: clamp(1.4rem, 4vw, 2.6rem);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface-strong);
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-card--primary { background: #ead9c7; }
+    .contact-card h2 { max-width: 13ch; margin-bottom: 1rem; font-size: clamp(2.1rem, 5vw, 4rem); }
+    .contact-card h3 { margin-bottom: 1rem; font-size: clamp(1.5rem, 3vw, 2rem); }
+    .contact-card p { color: #585a54; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.6rem; }
+    .contact-list { display: grid; gap: 1.15rem; margin: 0; }
+    .contact-list > div { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 1rem; padding-bottom: 1.1rem; border-bottom: 1px solid var(--border); }
+    .contact-list > div:last-child { padding-bottom: 0; border-bottom: 0; }
+    .contact-list dt { color: var(--muted); font-size: .87rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+    .contact-list dd { margin: 0; color: var(--text); font-weight: 700; }
+    .contact-list a { text-decoration-thickness: .08em; text-underline-offset: .18em; }
+    .map-wrap {
+      height: clamp(20rem, 48vw, 31rem);
+      margin-top: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: #e3ddd3;
+      box-shadow: var(--shadow-sm);
+    }
+    .map-wrap iframe { width: 100%; height: 100%; border: 0; }
 
-        /* Map rounded */
-        .map-frame { border-radius: 12px; overflow: hidden; box-shadow: 0 12px 32px rgba(2,6,23,0.12); }
+    .site-footer { padding: 3rem 0 6.5rem; background: #17201b; color: white; }
+    .footer-grid { display: grid; gap: 2rem; }
+    .footer-brand p { max-width: 31rem; margin: 1rem 0 0; color: #c6cbc5; }
+    .footer-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+    .footer-nav h3 { margin-bottom: .8rem; font-family: inherit; font-size: .84rem; letter-spacing: .08em; text-transform: uppercase; }
+    .footer-nav ul { display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; }
+    .footer-nav a { color: #d9ddd8; text-decoration: none; }
+    .footer-nav a:hover { color: white; text-decoration: underline; text-underline-offset: .2em; }
+    .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-dark); color: #aeb6ae; font-size: .85rem; }
 
-        /* Footer gradient */
-        footer.site-footer {
-            background: linear-gradient(180deg,#7c2d12 0%, #0f1724 100%);
-        }
-        /* social hover amber glow */
-        .social-amber:hover { color: #FFB547 !important; text-shadow: 0 4px 18px rgba(255,165,50,0.18); transform: translateY(-2px); }
+    .mobile-cta {
+      position: fixed;
+      right: .75rem;
+      bottom: max(.75rem, env(safe-area-inset-bottom));
+      left: .75rem;
+      z-index: 90;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+      padding: .5rem;
+      border: 1px solid rgba(39, 42, 36, .12);
+      border-radius: 1rem;
+      background: rgba(255, 253, 248, .95);
+      box-shadow: 0 16px 40px rgba(30, 26, 20, .2);
+      backdrop-filter: blur(14px);
+    }
+    .mobile-cta .button { min-height: 3rem; padding-inline: .65rem; font-size: .9rem; }
 
-        /* Floating call button slight lift */
-        .fab:active { transform: translateY(1px) scale(.99); transition: transform .08s; }
-    </style>
+    .lightbox[hidden] { display: none; }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 1rem;
+      padding: max(1rem, env(safe-area-inset-top)) max(1rem, env(safe-area-inset-right)) max(1rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+      background: rgba(12, 16, 13, .94);
+      color: white;
+    }
+    .lightbox-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .lightbox-count { color: #d3d7d2; font-size: .88rem; }
+    .icon-button {
+      display: inline-grid;
+      width: 2.9rem;
+      height: 2.9rem;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .3);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .06);
+      color: white;
+      cursor: pointer;
+    }
+    .icon-button svg { width: 1.25rem; height: 1.25rem; }
+    .lightbox-stage { display: grid; min-height: 0; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .75rem; }
+    .lightbox-figure { display: grid; min-width: 0; min-height: 0; place-items: center; margin: 0; }
+    .lightbox-image { max-width: 100%; max-height: calc(100dvh - 10rem); object-fit: contain; border-radius: .5rem; }
+    .lightbox-caption { min-height: 1.5rem; margin: 0; color: #d3d7d2; font-size: .9rem; text-align: center; }
+
+    [data-reveal] { opacity: 1; transform: none; }
+    .js [data-reveal] { opacity: 0; transform: translateY(1.25rem); transition: opacity .55s ease, transform .55s var(--ease); }
+    .js [data-reveal].is-visible { opacity: 1; transform: none; }
+
+    @media (hover: hover) {
+      .service-card:hover { transform: translateY(-5px); border-color: #c9b49a; box-shadow: var(--shadow-md); }
+      .gallery-card:hover img { transform: scale(1.035); filter: saturate(1.04); }
+    }
+
+    @media (min-width: 42rem) {
+      .gallery-grid { gap: 1rem; }
+      .gallery-card:nth-child(5n + 1) { grid-column: auto; aspect-ratio: 4 / 3; }
+      .gallery-card:nth-child(1), .gallery-card:nth-child(8), .gallery-card:nth-child(14) { grid-column: span 2; aspect-ratio: 16 / 8.9; }
+      .review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .review-card:last-child { grid-column: span 2; }
+      .contact-layout { grid-template-columns: 1.12fr .88fr; }
+      .footer-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 52rem) {
+      .desktop-nav { display: flex; }
+      .menu-toggle { display: none; }
+      .header-phone { display: inline-flex; min-height: 2.8rem; padding: .65rem 1rem; }
+      .hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(20rem, .72fr); }
+      .hero-photo { min-height: 34rem; }
+      .service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .process-layout { grid-template-columns: minmax(0, 1.05fr) minmax(22rem, .7fr); align-items: stretch; }
+      .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .gallery-card:nth-child(1), .gallery-card:nth-child(8), .gallery-card:nth-child(14) { grid-column: span 2; }
+      .review-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .review-card:last-child { grid-column: auto; }
+      .footer-grid { grid-template-columns: 1.1fr .9fr; align-items: start; }
+      .mobile-cta { display: none; }
+      .site-footer { padding-bottom: 3rem; }
+    }
+
+    @media (min-width: 70rem) {
+      .gallery-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .gallery-card:nth-child(1), .gallery-card:nth-child(8), .gallery-card:nth-child(14) { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+      .gallery-card:nth-child(1) { grid-row: 1 / span 2; }
+      .gallery-card:nth-child(8) { grid-row: 3 / span 2; }
+      .gallery-card:nth-child(14) { grid-row: 5 / span 2; }
+    }
+
+    @media (max-width: 35rem) {
+      .brand-text { max-width: 10.5rem; overflow: hidden; text-overflow: ellipsis; }
+      .hero-actions .button { width: 100%; }
+      .hero-trust { gap: .5rem; }
+      .hero-trust span { font-size: .75rem; }
+      .contact-list > div { grid-template-columns: 1fr; gap: .25rem; }
+      .lightbox-stage { grid-template-columns: 1fr; }
+      .lightbox-stage > .icon-button { position: absolute; top: 50%; transform: translateY(-50%); }
+      #lightbox-prev { left: .75rem; }
+      #lightbox-next { right: .75rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+      .js [data-reveal] { opacity: 1; transform: none; }
+    }
+  </style>
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Дерево в деталях",
+    "description": "Укладка и реставрация деревянных полов в КМВ с выездом по КЧР.",
+    "telephone": "+7-918-809-84-66",
+    "areaServed": ["Кавказские Минеральные Воды", "Карачаево-Черкесская Республика"],
+    "openingHours": "Mo-Fr 10:00-19:00"
+  }
+  </script>
 </head>
-<body class="font-sans bg-gray-50 text-gray-800">
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
 
-    <!-- Header -->
-    <header class="site-header fixed w-full z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center gap-3">
-                    <div class="text-2xl text-amber-700">
-                        <i class="fas fa-tree"></i>
-                    </div>
-                    <a href="#" class="text-lg font-bold text-amber-900">Дерево в деталях</a>
-                </div>
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Дерево в деталях — на главную">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+            <path d="M12 3c-3.4 2.4-5.5 5-5.5 8.2A5.5 5.5 0 0 0 12 16.7a5.5 5.5 0 0 0 5.5-5.5C17.5 8 15.4 5.4 12 3Z"/>
+            <path d="M12 9v12M8.6 12.4 12 15.8l3.4-3.4"/>
+          </svg>
+        </span>
+        <span class="brand-text">Дерево в деталях</span>
+      </a>
 
-                <nav class="hidden md:flex items-center gap-8 text-gray-700">
-                    <a href="#services" class="hover:text-amber-700 transition">Услуги</a>
-                    <a href="#gallery" class="hover:text-amber-700 transition">Галерея</a>
-                    <a href="#reviews" class="hover:text-amber-700 transition">Отзывы</a>
-                    <a href="#contact" class="hover:text-amber-700 transition">Контакты</a>
-                </nav>
+      <nav class="desktop-nav" aria-label="Основная навигация">
+        <a href="#services">Услуги</a>
+        <a href="#process">Как работаем</a>
+        <a href="#gallery">Работы</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contact">Контакты</a>
+      </nav>
 
-                <div class="flex items-center gap-3">
-                    <a href="tel:+79188098466" class="hidden md:inline-block bg-amber-700 hover:bg-amber-800 text-white px-4 py-2 rounded-full transition">Позвонить</a>
-
-                    <!-- Mobile menu button -->
-                    <button id="menu-open-btn" aria-label="Открыть меню" class="md:hidden text-gray-700">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Mobile drawer -->
-        <div id="mobile-drawer" class="fixed top-0 right-0 w-80 h-full bg-white z-60 shadow-xl p-6 hidden md:hidden">
-            <div class="flex items-center justify-between mb-6">
-                <div class="flex items-center gap-3">
-                    <div class="text-2xl text-amber-700"><i class="fas fa-tree"></i></div>
-                    <div class="font-bold text-lg">Дерево в деталях</div>
-                </div>
-                <button id="menu-close-btn" aria-label="Закрыть меню" class="text-gray-600">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <nav class="flex flex-col gap-4">
-                <a href="#services" class="py-3 px-2 rounded hover:bg-gray-100">Услуги</a>
-                <a href="#gallery" class="py-3 px-2 rounded hover:bg-gray-100">Галерея</a>
-                <a href="#reviews" class="py-3 px-2 rounded hover:bg-gray-100">Отзывы</a>
-                <a href="#contact" class="py-3 px-2 rounded hover:bg-gray-100">Контакты</a>
-                <a href="tel:+79188098466" class="mt-4 inline-flex items-center justify-center bg-amber-700 text-white py-3 rounded">Позвонить</a>
-            </nav>
-        </div>
-
-        <!-- Drawer overlay -->
-        <div id="drawer-overlay" class="fixed inset-0 hidden z-50"></div>
-    </header>
-
-    <!-- Hero -->
-    <section id="hero" class="hero-bg h-screen flex items-center justify-center text-white pt-16 relative" style="background-image: linear-gradient(rgba(6,6,6,0.45), rgba(2,6,23,0.45)), url('https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');">
-        <div class="absolute inset-0 pointer-events-none"></div>
-        <div class="container mx-auto px-4 text-center">
-            <div class="max-w-3xl mx-auto">
-                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 stagger delay-1" id="hero-title">Профессиональная укладка и реставрация деревянных полов</h1>
-                <div class="text-lg md:text-xl mb-2 stagger delay-2" id="hero-sub">
-                    <p>10+ лет опыта — Работаем по КМВ</p>
-                    <p class="opacity-90">Возможен выезд по КЧР</p>
-                </div>
-
-                <div class="mt-8 stagger delay-3">
-                    <a href="tel:+79188098466" class="inline-block glow-btn bg-amber-700 hover:bg-amber-800 text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg">
-                        Бесплатная консультация
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- subtle overlay gradient bottom -->
-        <div class="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/25 to-transparent pointer-events-none"></div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-900 mb-8">Наши услуги</h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="service-card bg-gray-50 rounded-lg overflow-hidden hover:border-amber-200 hover:border hover:shadow-xl">
-                    <div class="h-52 flex items-center justify-center icon-gradient">
-                        <div class="w-20 h-20 rounded-full flex items-center justify-center text-3xl">
-                            <i class="fas fa-ruler-combined"></i>
-                        </div>
-                    </div>
-                    <div class="p-6 hover-border">
-                        <h3 class="text-xl font-bold mb-3 text-amber-800">Укладка деревянных полов</h3>
-                        <p class="text-gray-600">Паркет, массивная и инженерная доска, ламинат, кварц-венил — с гарантией качества.</p>
-                        <ul class="mt-4 space-y-2 text-gray-600">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i>Традиционные и художественные схемы</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i>Качественные материалы</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i>Соблюдение технологии</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="service-card bg-gray-50 rounded-lg overflow-hidden hover:border-amber-200 hover:border hover:shadow-xl">
-                    <div class="h-52 flex items-center justify-center icon-gradient">
-                        <div class="w-20 h-20 rounded-full flex items-center justify-center text-3xl">
-                            <i class="fas fa-broom"></i>
-                        </div>
-                    </div>
-                    <div class="p-6 hover-border">
-                        <h3 class="text-xl font-bold mb-3 text-amber-800">Реставрация и циклевка</h3>
-                        <p class="text-gray-600">Возвращаем полам вид «как новые», сохраняя характер древесина.</p>
-                        <ul class="mt-4 space-y-2 text-gray-600">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i>Удаление царапин и дефектов</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i>Шлифовка и полировка</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i>Защитные покрытия</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="service-card bg-gray-50 rounded-lg overflow-hidden hover:border-amber-200 hover:border hover:shadow-xl">
-                    <div class="h-52 flex items-center justify-center icon-gradient">
-                        <div class="w-20 h-20 rounded-full flex items-center justify-center text-3xl">
-                            <i class="fas fa-paint-roller"></i>
-                        </div>
-                    </div>
-                    <div class="p-6 hover-border">
-                        <h3 class="text-xl font-bold mb-3 text-amber-800">Покрытие и обработка</h3>
-                        <p class="text-gray-600">Масла, лаки, воски. Экологичные составы, тонировка и браширование.</p>
-                        <ul class="mt-4 space-y-2 text-gray-600">
-                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i>Продление срока службы</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i>Декоративные эффекты</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle text-amber-600 mr-2"></i>Бережно к здоровью</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery -->
-    <section id="gallery" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-900 mb-8">Галерея работ</h2>
-
-            <div class="swiper gallery-swiper mb-4">
-                <div class="swiper-wrapper">
-                    <!-- Slides -->
-                    <div class="swiper-slide">
-                        <img src="ukladka-01.jpg" alt="Укладка — фото 1">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="ukladka-02.jpg" alt="Укладка — фото 2">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="ukladka-03.jpg" alt="Укладка — фото 3">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="ukladka-04.jpg" alt="Укладка — фото 4">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="ukladka-05.jpg" alt="Укладка — фото 5">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="ukladka-06.jpg" alt="Укладка — фото 6">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="ukladka-07.jpg" alt="Укладка — фото 7">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-01.jpg" alt="Реставрация — фото 1">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-02.jpg" alt="Реставрация — фото 2">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-03.jpg" alt="Реставрация — фото 3">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-04.jpg" alt="Реставрация — фото 4">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-05.jpg" alt="Реставрация — фото 5">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-06.jpg" alt="Реставрация — фото 6">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-07.jpg" alt="Реставрация — фото 7">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-08.jpg" alt="Реставрация — фото 8">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-09.jpg" alt="Реставрация — фото 9">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-10.jpg" alt="Реставрация — фото 10">
-                    </div>
-                </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-            </div>
-
-            <div class="swiper gallery-thumbs">
-                <div class="swiper-wrapper">
-                    <!-- Thumbnails -->
-                    <div class="swiper-slide">
-                        <img src="ukladka-01.jpg" alt="Укладка — фото 1">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="ukladka-02.jpg" alt="Укладка — фото 2">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="ukladka-03.jpg" alt="Укладка — фото 3">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="ukladka-04.jpg" alt="Укладка — фото 4">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="ukladka-05.jpg" alt="Укладка — фото 5">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="ukladka-06.jpg" alt="Укладка — фото 6">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="ukladka-07.jpg" alt="Укладка — фото 7">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-01.jpg" alt="Реставрация — фото 1">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-02.jpg" alt="Реставрация — фото 2">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-03.jpg" alt="Реставрация — фото 3">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-04.jpg" alt="Реставрация — фото 4">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-05.jpg" alt="Реставрация — фото 5">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-06.jpg" alt="Реставрация — фото 6">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-07.jpg" alt="Реставрация — фото 7">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-08.jpg" alt="Реставрация — фото 8">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-09.jpg" alt="Реставрация — фото 9">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="restavr-10.jpg" alt="Реставрация — фото 10">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="lightbox" aria-hidden="true">
-        <button id="lb-close" class="absolute top-6 right-6 text-white text-2xl p-2" aria-label="Закрыть"><i class="fas fa-times"></i></button>
-        <button id="lb-prev" class="absolute left-6 text-white text-2xl p-2" aria-label="Предыдущее"><i class="fas fa-chevron-left"></i></button>
-        <img id="lb-img" src="" alt="">
-        <button id="lb-next" class="absolute right-6 text-white text-2xl p-2" aria-label="Следующее"><i class="fas fa-chevron-right"></i></button>
+      <div class="header-actions">
+        <a class="button button--primary header-phone" href="tel:+79188098466">Позвонить</a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
     </div>
 
-    <!-- Reviews (Swiper) -->
-    <section id="reviews" class="py-20 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-900 mb-8">Отзывы наших клиентов</h2>
+    <div class="menu-overlay" id="menu-overlay" hidden></div>
+    <aside class="mobile-menu" id="mobile-menu" aria-label="Мобильное меню" hidden>
+      <nav>
+        <a href="#services">Услуги</a>
+        <a href="#process">Как работаем</a>
+        <a href="#gallery">Галерея работ</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <div class="mobile-menu-contact">
+        <a class="button button--primary" href="tel:+79188098466">+7 (918) 809-84-66</a>
+        <a class="button button--secondary" href="https://wa.me/79188098466" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      </div>
+    </aside>
+  </header>
 
-            <div class="swiper-container">
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-                        <!-- Slide 1 -->
-                        <div class="swiper-slide p-6">
-                            <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center mr-4">
-                                        <img src="client-anna.jpg" alt="Анна" class="w-10 h-10 rounded-full object-cover" onerror="this.style.display='none'">
-                                        <i class="fas fa-user text-amber-700 text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold">Анна Смирнова</h4>
-                                        <div class="flex text-amber-400 stars">
-                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="text-gray-600">«Работа выполнена безупречно, сроки соблюдены. Пол выглядит потрясающе!»</p>
-                            </div>
-                        </div>
-
-                        <!-- Slide 2 -->
-                        <div class="swiper-slide p-6">
-                            <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center mr-4">
-                                        <img src="client-ivan.jpg" alt="Иван" class="w-10 h-10 rounded-full object-cover" onerror="this.style.display='none'">
-                                        <i class="fas fa-user text-amber-700 text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold">Иван Петров</h4>
-                                        <div class="flex text-amber-400 stars">
-                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="text-gray-600">«Реставрация дубового пола превзошла ожидания: аккуратно, без пыли, результат — как новый.»</p>
-                            </div>
-                        </div>
-
-                        <!-- Slide 3 -->
-                        <div class="swiper-slide p-6">
-                            <div class="bg-gray-50 p-6 rounded-lg shadow-md">
-                                <div class="flex items-center mb-4">
-                                    <div class="w-12 h-12 rounded-full bg-amber-200 flex items-center justify-center mr-4">
-                                        <img src="client-elena.jpg" alt="Елена" class="w-10 h-10 rounded-full object-cover" onerror="this.style.display='none'">
-                                        <i class="fas fa-user text-amber-700 text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold">Елена Козлова</h4>
-                                        <div class="flex text-amber-400 stars">
-                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <p class="text-gray-600">«Прошло 2 года — полы как новые. Большое спасибо за советы по уходу!»</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- pagination + nav -->
-                    <div class="swiper-pagination mt-6"></div>
-                </div>
-            </div>
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy" data-reveal>
+          <span class="eyebrow">КМВ · выезд по КЧР</span>
+          <h1>Деревянный пол, который снова выглядит достойно</h1>
+          <p class="hero-lead">Укладываем новые покрытия и бережно восстанавливаем существующие: паркет, массивную и инженерную доску, ламинат и кварц-винил.</p>
+          <div class="hero-actions">
+            <a class="button button--primary" href="tel:+79188098466">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 2 2.3Z"/></svg>
+              Бесплатная консультация
+            </a>
+            <a class="button button--secondary" href="#gallery">Посмотреть работы</a>
+          </div>
+          <ul class="hero-trust" aria-label="Преимущества">
+            <li><strong>10+ лет</strong><span>практического опыта</span></li>
+            <li><strong>КМВ</strong><span>основной регион работы</span></li>
+            <li><strong>КЧР</strong><span>возможен выезд</span></li>
+          </ul>
         </div>
+
+        <div class="hero-visual" data-reveal>
+          <div class="hero-photo">
+            <img
+              src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1000&q=82"
+              srcset="https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=640&q=80 640w, https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1000&q=82 1000w, https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&w=1400&q=82 1400w"
+              sizes="(min-width: 832px) 38vw, 100vw"
+              width="1000"
+              height="1250"
+              fetchpriority="high"
+              alt="Интерьер с аккуратно уложенным деревянным полом">
+          </div>
+          <div class="hero-note">
+            <strong>Сначала — состояние основания</strong>
+            <p>Подбираем технологию под конкретный пол, материал и условия помещения, а не по шаблону.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-bold text-center text-amber-900 mb-8">Контакты</h2>
-
-            <div class="flex flex-col lg:flex-row gap-8">
-                <!-- Left -->
-                <div class="lg:w-1/2 wood-pattern bg-white p-8 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold mb-3 text-amber-800">Свяжитесь через наши соцсети или по телефону</h3>
-                    <p class="text-gray-600 mb-6">Работаем по КМВ, возможен выезд по КЧР.</p>
-
-                    <div class="flex items-center gap-4">
-                        <a href="https://t.me/vannekst" target="_blank" rel="noopener" class="w-16 h-16 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition transform hover:-translate-y-1">
-                            <div class="text-[#229ED9] text-2xl"><i class="fab fa-telegram-plane"></i></div>
-                        </a>
-
-                        <a href="https://wa.me/79188098466" target="_blank" rel="noopener" class="w-16 h-16 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition transform hover:-translate-y-1">
-                            <div class="text-green-600 text-2xl"><i class="fab fa-whatsapp"></i></div>
-                        </a>
-
-                        <a href="tel:+79188098466" class="w-16 h-16 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition transform hover:-translate-y-1 bg-amber-700 text-white">
-                            <div class="text-2xl"><i class="fas fa-phone-alt"></i></div>
-                        </a>
-                    </div>
-
-                    <div class="mt-8 text-gray-700">
-                        <p><strong>Регион:</strong> КМВ (выезд по КЧР)</p>
-                        <p class="mt-2"><strong>Телефон:</strong> <a href="tel:+79188098466" class="text-amber-700">+7 (918) 809-84-66</a></p>
-                        <p class="mt-2"><strong>Режим работы:</strong> Ежедневно: 10:00 — 19:00 (Сб, Вс — выходной)</p>
-                    </div>
-                </div>
-
-                <!-- Right -->
-                <div class="lg:w-1/2 bg-white p-8 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold mb-6 text-amber-800">Наши контакты</h3>
-
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="bg-amber-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-map-marker-alt text-amber-700"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Регион</h4>
-                                <p class="text-gray-600">КМВ (выезд по КЧР)</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start">
-                            <div class="bg-amber-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-phone-alt text-amber-700"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Телефон</h4>
-                                <p class="text-gray-600">+7 (918) 809-84-66</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start">
-                            <div class="bg-amber-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-clock text-amber-700"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-800">Режим работы</h4>
-                                <p class="text-gray-600">Ежедневно: 10:00 — 19:00</p>
-                                <p class="text-gray-600">Суббота, Воскресенье: выходной</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8">
-                        <h4 class="font-bold text-gray-800 mb-4">Мы в социальных сетях</h4>
-                        <div class="flex space-x-4">
-                            <a href="https://t.me/derevo_v_detalyakh" target="_blank" rel="noopener" aria-label="Telegram канал" class="p-3 rounded-full bg-gray-200 hover:bg-amber-600 hover:text-white transition social-amber">
-                                <i class="fab fa-telegram-plane"></i>
-                            </a>
-                            <a href="https://t.me/vannekst" target="_blank" rel="noopener" aria-label="Telegram" class="p-3 rounded-full bg-gray-200 hover:bg-amber-600 hover:text-white transition social-amber">
-                                <i class="fab fa-telegram"></i>
-                            </a>
-                            <a href="https://wa.me/79188098466" target="_blank" rel="noopener" aria-label="WhatsApp" class="p-3 rounded-full bg-gray-200 hover:bg-amber-600 hover:text-white transition social-amber">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                            <a href="tel:+79188098466" class="p-3 rounded-full bg-gray-200 hover:bg-amber-600 hover:text-white transition social-amber" aria-label="Позвонить">
-                                <i class="fas fa-phone"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+    <section class="section section--surface" id="services">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <div>
+            <span class="eyebrow">Услуги</span>
+            <h2>Работы с деревянным полом — от основания до финиша</h2>
+          </div>
+          <p>Подбираем технологию под состояние основания, материал и ожидаемый результат — без универсальных решений для разных покрытий.</p>
         </div>
+
+        <div class="service-grid">
+          <article class="service-card" data-reveal>
+            <span class="service-number" aria-hidden="true">01</span>
+            <h3>Укладка покрытий</h3>
+            <p>Паркет, массивная и инженерная доска, ламинат и кварц-винил с соблюдением технологии монтажа.</p>
+            <ul class="feature-list">
+              <li>Традиционные и художественные схемы</li>
+              <li>Подготовка и оценка основания</li>
+              <li>Аккуратные примыкания и завершение работ</li>
+            </ul>
+          </article>
+
+          <article class="service-card" data-reveal>
+            <span class="service-number" aria-hidden="true">02</span>
+            <h3>Реставрация и циклёвка</h3>
+            <p>Возвращаем покрытию ухоженный вид, сохраняя естественный рисунок и характер древесины.</p>
+            <ul class="feature-list">
+              <li>Удаление царапин и локальных дефектов</li>
+              <li>Шлифовка и полировка поверхности</li>
+              <li>Подготовка к защитному покрытию</li>
+            </ul>
+          </article>
+
+          <article class="service-card" data-reveal>
+            <span class="service-number" aria-hidden="true">03</span>
+            <h3>Покрытие и обработка</h3>
+            <p>Масла, лаки и воски, а также тонировка и браширование для защиты и нужного визуального эффекта.</p>
+            <ul class="feature-list">
+              <li>Защита поверхности от повседневной нагрузки</li>
+              <li>Тонирование под интерьер</li>
+              <li>Рекомендации по дальнейшему уходу</li>
+            </ul>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Map -->
-    <section class="py-12 px-4">
-        <div class="container mx-auto">
-            <div class="map-frame h-96 w-full">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d709110.8209!2d42.6!3d44.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sКавказские%20Минеральные%20Воды!2s!5e0!3m2!1sru!2sru!4v1620000000000!5m2!1sru!2sru"
-                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
+    <section class="section" id="process">
+      <div class="container process-layout">
+        <div class="process-intro" data-reveal>
+          <div class="process-intro-content">
+            <span class="eyebrow">Понятный процесс</span>
+            <h2>Без лишних шагов и неожиданностей</h2>
+            <p>От первого обращения до сдачи результата вы понимаете последовательность работ и заранее согласовываете ключевые решения.</p>
+          </div>
         </div>
+
+        <div class="process-steps" data-reveal>
+          <article class="process-step">
+            <span>01</span>
+            <div><h3>Обсуждаем задачу</h3><p>Уточняем тип покрытия, площадь, состояние пола, регион и желаемый результат.</p></div>
+          </article>
+          <article class="process-step">
+            <span>02</span>
+            <div><h3>Оцениваем состояние</h3><p>Определяем, нужна ли укладка, локальный ремонт, циклёвка или комплексная реставрация.</p></div>
+          </article>
+          <article class="process-step">
+            <span>03</span>
+            <div><h3>Согласовываем решение</h3><p>Фиксируем подход, материалы и последовательность работ до начала выполнения.</p></div>
+          </article>
+          <article class="process-step">
+            <span>04</span>
+            <div><h3>Выполняем и сдаём</h3><p>Проверяем качество результата и объясняем, как ухаживать за покрытием дальше.</p></div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="site-footer text-white py-10">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-start gap-8">
-                <div>
-                    <div class="flex items-center gap-3">
-                        <div class="text-2xl text-amber-400"><i class="fas fa-tree"></i></div>
-                        <div>
-                            <h2 class="text-xl font-bold">Дерево в деталях</h2>
-                            <p class="text-sm opacity-80">Укладка и реставрация деревянных полов • КМВ • Выезд по КЧР</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex gap-10">
-                    <div>
-                        <h3 class="font-bold mb-2">Услуги</h3>
-                        <ul class="space-y-1 text-sm opacity-90">
-                            <li>Укладка паркета</li>
-                            <li>Реставрация полов</li>
-                            <li>Циклевка</li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 class="font-bold mb-2">Компания</h3>
-                        <ul class="space-y-1 text-sm opacity-90">
-                            <li><a href="#reviews" class="hover:text-amber-300">Отзывы</a></li>
-                            <li><a href="#contact" class="hover:text-amber-300">Контакты</a></li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 class="font-bold mb-2">Контакты</h3>
-                        <ul class="space-y-1 text-sm opacity-90">
-                            <li><a href="tel:+79188098466" class="hover:text-amber-300">+7 (918) 809-84-66</a></li>
-                            <li>КМВ и выезд по КЧР</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center text-sm opacity-90">
-                <p>© 2025 Дерево в деталях. Все права защищены.</p>
-                <div class="flex gap-4 mt-3 md:mt-0">
-                    <a href="https://t.me/derevo_v_detalyakh" target="_blank" rel="noopener" class="social-amber"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="https://t.me/vannekst" target="_blank" rel="noopener" class="social-amber"><i class="fab fa-telegram"></i></a>
-                    <a href="https://wa.me/79188098466" target="_blank" rel="noopener" class="social-amber"><i class="fab fa-whatsapp"></i></a>
-                    <a href="tel:+79188098466" class="social-amber"><i class="fas fa-phone"></i></a>
-                </div>
-            </div>
+    <section class="section section--surface" id="gallery">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <div>
+            <span class="eyebrow">Галерея</span>
+            <h2>Результат лучше всего виден в деталях</h2>
+          </div>
+          <p>Примеры укладки и реставрации: фактура древесины, качество примыканий и состояние поверхности после обработки.</p>
         </div>
-    </footer>
 
-    <!-- Floating action button -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <a href="tel:+79188098466" class="fab bg-amber-600 hover:bg-amber-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition" aria-label="Позвонить">
-            <i class="fas fa-phone-alt text-xl"></i>
-        </a>
+        <div class="gallery-toolbar">
+          <p class="gallery-hint">Нажмите на фотографию, чтобы увеличить</p>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid">
+          <button class="gallery-card" type="button" data-label="Укладка деревянного пола — работа 1" data-src="ukladka-01.jpg"><img src="ukladka-01.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Укладка деревянного пола — работа 1"><span class="gallery-caption">Укладка · работа 01</span></button>
+          <button class="gallery-card" type="button" data-label="Укладка деревянного пола — работа 2" data-src="ukladka-02.jpg"><img src="ukladka-02.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Укладка деревянного пола — работа 2"><span class="gallery-caption">Укладка · работа 02</span></button>
+          <button class="gallery-card" type="button" data-label="Укладка деревянного пола — работа 3" data-src="ukladka-03.jpg"><img src="ukladka-03.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Укладка деревянного пола — работа 3"><span class="gallery-caption">Укладка · работа 03</span></button>
+          <button class="gallery-card" type="button" data-label="Укладка деревянного пола — работа 4" data-src="ukladka-04.jpg"><img src="ukladka-04.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Укладка деревянного пола — работа 4"><span class="gallery-caption">Укладка · работа 04</span></button>
+          <button class="gallery-card" type="button" data-label="Укладка деревянного пола — работа 5" data-src="ukladka-05.jpg"><img src="ukladka-05.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Укладка деревянного пола — работа 5"><span class="gallery-caption">Укладка · работа 05</span></button>
+          <button class="gallery-card" type="button" data-label="Укладка деревянного пола — работа 6" data-src="ukladka-06.jpg"><img src="ukladka-06.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Укладка деревянного пола — работа 6"><span class="gallery-caption">Укладка · работа 06</span></button>
+          <button class="gallery-card" type="button" data-label="Укладка деревянного пола — работа 7" data-src="ukladka-07.jpg"><img src="ukladka-07.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Укладка деревянного пола — работа 7"><span class="gallery-caption">Укладка · работа 07</span></button>
+          <button class="gallery-card" type="button" data-label="Реставрация деревянного пола — работа 1" data-src="restavr-01.jpg"><img src="restavr-01.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Реставрация деревянного пола — работа 1"><span class="gallery-caption">Реставрация · работа 01</span></button>
+          <button class="gallery-card" type="button" data-label="Реставрация деревянного пола — работа 2" data-src="restavr-02.jpg"><img src="restavr-02.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Реставрация деревянного пола — работа 2"><span class="gallery-caption">Реставрация · работа 02</span></button>
+          <button class="gallery-card" type="button" data-label="Реставрация деревянного пола — работа 3" data-src="restavr-03.jpg"><img src="restavr-03.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Реставрация деревянного пола — работа 3"><span class="gallery-caption">Реставрация · работа 03</span></button>
+          <button class="gallery-card" type="button" data-label="Реставрация деревянного пола — работа 4" data-src="restavr-04.jpg"><img src="restavr-04.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Реставрация деревянного пола — работа 4"><span class="gallery-caption">Реставрация · работа 04</span></button>
+          <button class="gallery-card" type="button" data-label="Реставрация деревянного пола — работа 5" data-src="restavr-05.jpg"><img src="restavr-05.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Реставрация деревянного пола — работа 5"><span class="gallery-caption">Реставрация · работа 05</span></button>
+          <button class="gallery-card" type="button" data-label="Реставрация деревянного пола — работа 6" data-src="restavr-06.jpg"><img src="restavr-06.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Реставрация деревянного пола — работа 6"><span class="gallery-caption">Реставрация · работа 06</span></button>
+          <button class="gallery-card" type="button" data-label="Реставрация деревянного пола — работа 7" data-src="restavr-07.jpg"><img src="restavr-07.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Реставрация деревянного пола — работа 7"><span class="gallery-caption">Реставрация · работа 07</span></button>
+          <button class="gallery-card" type="button" data-label="Реставрация деревянного пола — работа 8" data-src="restavr-08.jpg"><img src="restavr-08.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Реставрация деревянного пола — работа 8"><span class="gallery-caption">Реставрация · работа 08</span></button>
+          <button class="gallery-card" type="button" data-label="Реставрация деревянного пола — работа 9" data-src="restavr-09.jpg"><img src="restavr-09.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Реставрация деревянного пола — работа 9"><span class="gallery-caption">Реставрация · работа 09</span></button>
+          <button class="gallery-card" type="button" data-label="Реставрация деревянного пола — работа 10" data-src="restavr-10.jpg"><img src="restavr-10.jpg" width="1200" height="900" loading="lazy" decoding="async" alt="Реставрация деревянного пола — работа 10"><span class="gallery-caption">Реставрация · работа 10</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="reviews">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <div>
+            <span class="eyebrow">Отзывы</span>
+            <h2>Работа, которую замечают и спустя время</h2>
+          </div>
+          <p>Для нас важен не только вид пола в день сдачи, но и то, как покрытие ведёт себя спустя месяцы и годы.</p>
+        </div>
+
+        <div class="review-grid">
+          <article class="review-card" data-reveal>
+            <div class="review-stars" aria-label="5 из 5">★★★★★</div>
+            <blockquote>«Работа выполнена безупречно, сроки соблюдены. Пол выглядит потрясающе!»</blockquote>
+            <div class="review-author"><span class="review-avatar" aria-hidden="true">АС</span><div><strong>Анна Смирнова</strong><span>укладка пола</span></div></div>
+          </article>
+          <article class="review-card" data-reveal>
+            <div class="review-stars" aria-label="5 из 5">★★★★★</div>
+            <blockquote>«Реставрация дубового пола превзошла ожидания: аккуратно, без пыли, результат — как новый.»</blockquote>
+            <div class="review-author"><span class="review-avatar" aria-hidden="true">ИП</span><div><strong>Иван Петров</strong><span>реставрация дубового пола</span></div></div>
+          </article>
+          <article class="review-card" data-reveal>
+            <div class="review-stars" aria-label="4,5 из 5">★★★★½</div>
+            <blockquote>«Прошло 2 года — полы как новые. Большое спасибо за советы по уходу!»</blockquote>
+            <div class="review-author"><span class="review-avatar" aria-hidden="true">ЕК</span><div><strong>Елена Козлова</strong><span>обработка и уход</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-layout">
+          <div class="contact-card contact-card--primary" data-reveal>
+            <span class="eyebrow">Обсудить задачу</span>
+            <h2>Расскажите, что происходит с вашим полом</h2>
+            <p>Позвоните или напишите удобным способом. Работаем по Кавказским Минеральным Водам, возможен выезд по КЧР.</p>
+            <div class="contact-actions">
+              <a class="button button--primary" href="tel:+79188098466">Позвонить</a>
+              <a class="button button--secondary" href="https://wa.me/79188098466" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="button button--secondary" href="https://t.me/vannekst" target="_blank" rel="noopener">Telegram</a>
+            </div>
+          </div>
+
+          <div class="contact-card" data-reveal>
+            <h3>Контактная информация</h3>
+            <dl class="contact-list">
+              <div><dt>Телефон</dt><dd><a href="tel:+79188098466">+7 (918) 809-84-66</a></dd></div>
+              <div><dt>Регион</dt><dd>КМВ, выезд по КЧР</dd></div>
+              <div><dt>График</dt><dd>Пн–Пт, 10:00–19:00<br>Сб–Вс — выходные</dd></div>
+              <div><dt>Канал</dt><dd><a href="https://t.me/derevo_v_detalyakh" target="_blank" rel="noopener">Telegram-канал</a></dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="map-wrap" data-reveal>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d709110.8209!2d42.6!3d44.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sКавказские%20Минеральные%20Воды!2s!5e0!3m2!1sru!2sru!4v1620000000000!5m2!1sru!2sru"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Карта региона Кавказских Минеральных Вод"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#top" style="color:white">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3c-3.4 2.4-5.5 5-5.5 8.2A5.5 5.5 0 0 0 12 16.7a5.5 5.5 0 0 0 5.5-5.5C17.5 8 15.4 5.4 12 3Z"/><path d="M12 9v12M8.6 12.4 12 15.8l3.4-3.4"/></svg>
+            </span>
+            <span>Дерево в деталях</span>
+          </a>
+          <p>Укладка, реставрация, циклёвка и обработка деревянных полов в КМВ с возможным выездом по КЧР.</p>
+        </div>
+        <div class="footer-nav">
+          <div><h3>Навигация</h3><ul><li><a href="#services">Услуги</a></li><li><a href="#gallery">Работы</a></li><li><a href="#reviews">Отзывы</a></li></ul></div>
+          <div><h3>Связь</h3><ul><li><a href="tel:+79188098466">Позвонить</a></li><li><a href="https://wa.me/79188098466" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://t.me/vannekst" target="_blank" rel="noopener">Telegram</a></li></ul></div>
+          <div><h3>Регион</h3><ul><li>КМВ</li><li>Выезд по КЧР</li><li>Пн–Пт, 10:00–19:00</li></ul></div>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year">2026</span> Дерево в деталях</span><span>Сайт адаптирован для клавиатуры и мобильных устройств</span></div>
     </div>
+  </footer>
 
-    <!-- JS -->
-    <script>
-        // Header scroll change
-        (function(){
-            const header = document.querySelector('header.site-header');
-            function onScroll(){
-                if(window.scrollY > 50) header.classList.add('scrolled');
-                else header.classList.remove('scrolled');
+  <div class="mobile-cta" aria-label="Быстрые действия">
+    <a class="button button--primary" href="tel:+79188098466">Позвонить</a>
+    <a class="button button--secondary" href="https://wa.me/79188098466" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption" hidden>
+    <div class="lightbox-top">
+      <span class="lightbox-count" id="lightbox-count" aria-live="polite"></span>
+      <button class="icon-button" id="lightbox-close" type="button" aria-label="Закрыть просмотр">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="lightbox-stage">
+      <button class="icon-button" id="lightbox-prev" type="button" aria-label="Предыдущее изображение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <figure class="lightbox-figure">
+        <img class="lightbox-image" id="lightbox-image" src="" alt="">
+      </figure>
+      <button class="icon-button" id="lightbox-next" type="button" aria-label="Следующее изображение">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const body = document.body;
+      const header = document.getElementById('site-header');
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuOverlay = document.getElementById('menu-overlay');
+      let menuLastFocus = null;
+      const pageContent = [
+        document.querySelector('main'),
+        document.querySelector('.site-footer'),
+        document.querySelector('.mobile-cta')
+      ].filter(Boolean);
+      const setPageInert = value => pageContent.forEach(element => { element.inert = value; });
+
+      const setHeaderState = () => header.classList.toggle('is-scrolled', window.scrollY > 12);
+      setHeaderState();
+      window.addEventListener('scroll', setHeaderState, { passive: true });
+
+      const openMenu = () => {
+        menuLastFocus = document.activeElement;
+        mobileMenu.hidden = false;
+        menuOverlay.hidden = false;
+        body.classList.add('menu-open');
+        setPageInert(true);
+        menuToggle.setAttribute('aria-expanded', 'true');
+        menuToggle.setAttribute('aria-label', 'Закрыть меню');
+        mobileMenu.querySelector('a')?.focus();
+      };
+
+      const closeMenu = ({ restoreFocus = true } = {}) => {
+        mobileMenu.hidden = true;
+        menuOverlay.hidden = true;
+        body.classList.remove('menu-open');
+        setPageInert(false);
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Открыть меню');
+        if (restoreFocus) menuLastFocus?.focus();
+      };
+
+      menuToggle.addEventListener('click', () => mobileMenu.hidden ? openMenu() : closeMenu());
+      menuOverlay.addEventListener('click', () => closeMenu());
+      mobileMenu.addEventListener('click', event => {
+        if (event.target.closest('a')) closeMenu({ restoreFocus: false });
+      });
+
+      document.addEventListener('keydown', event => {
+        if (mobileMenu.hidden) return;
+        if (event.key === 'Escape') closeMenu();
+        if (event.key === 'Tab') {
+          const focusable = [...mobileMenu.querySelectorAll('a, button:not([disabled])')];
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        }
+      });
+
+      const revealItems = document.querySelectorAll('[data-reveal]');
+      if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
             }
-            onScroll();
-            window.addEventListener('scroll', onScroll, {passive:true});
-        })();
+          });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: .08 });
+        revealItems.forEach(item => observer.observe(item));
+      } else {
+        revealItems.forEach(item => item.classList.add('is-visible'));
+      }
 
-        // Mobile drawer open/close
-        (function(){
-            const openBtn = document.getElementById('menu-open-btn');
-            const closeBtn = document.getElementById('menu-close-btn');
-            const drawer = document.getElementById('mobile-drawer');
-            const overlay = document.getElementById('drawer-overlay');
+      document.querySelectorAll('.gallery-card img').forEach(img => {
+        img.addEventListener('error', () => img.closest('.gallery-card')?.classList.add('is-missing'));
+      });
 
-            function openDrawer(){
-                drawer.classList.remove('hidden');
-                setTimeout(()=> { drawer.classList.add('open'); }, 20);
-                overlay.classList.remove('hidden');
-                overlay.classList.add('drawer-overlay', 'block');
-                overlay.style.zIndex = 50;
-            }
-            function closeDrawer(){
-                drawer.classList.remove('open');
-                overlay.classList.remove('drawer-overlay', 'block');
-                overlay.classList.add('hidden');
-                setTimeout(()=> { drawer.classList.add('hidden'); }, 350);
-            }
+      const cards = [...document.querySelectorAll('.gallery-card')];
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightbox-image');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const lightboxCount = document.getElementById('lightbox-count');
+      const closeButton = document.getElementById('lightbox-close');
+      const prevButton = document.getElementById('lightbox-prev');
+      const nextButton = document.getElementById('lightbox-next');
+      let currentIndex = 0;
+      let lightboxLastFocus = null;
 
-            openBtn && openBtn.addEventListener('click', openDrawer);
-            closeBtn && closeBtn.addEventListener('click', closeDrawer);
-            overlay && overlay.addEventListener('click', closeDrawer);
-        })();
+      const renderLightbox = index => {
+        currentIndex = (index + cards.length) % cards.length;
+        const card = cards[currentIndex];
+        const label = card.dataset.label || 'Фотография работы';
+        lightboxImage.onerror = () => {
+          lightboxImage.removeAttribute('src');
+          lightboxCaption.textContent = `${label} — файл изображения не найден`;
+        };
+        lightboxImage.src = card.dataset.src;
+        lightboxImage.alt = label;
+        lightboxCaption.textContent = label;
+        lightboxCount.textContent = `${currentIndex + 1} / ${cards.length}`;
+      };
 
-        // Smooth scrolling for anchors
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if(!href || href === '#') return;
-                const target = document.querySelector(href);
-                if (!target) return;
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // close mobile drawer if open
-                const drawer = document.getElementById('mobile-drawer');
-                if (drawer && drawer.classList.contains('open')) {
-                    drawer.classList.remove('open');
-                    setTimeout(()=> drawer.classList.add('hidden'), 350);
-                    document.getElementById('drawer-overlay').classList.add('hidden');
-                }
-            });
-        });
+      const openLightbox = index => {
+        lightboxLastFocus = document.activeElement;
+        renderLightbox(index);
+        lightbox.hidden = false;
+        body.classList.add('dialog-open');
+        document.getElementById('site-header').inert = true;
+        setPageInert(true);
+        closeButton.focus();
+      };
 
-        // Hero parallax
-        (function(){
-            const hero = document.getElementById('hero');
-            function parallax(){
-                const sc = window.scrollY;
-                // move background slightly
-                hero.style.backgroundPosition = `center ${50 + sc * 0.12}px`;
-            }
-            parallax();
-            window.addEventListener('scroll', parallax, {passive:true});
-        })();
+      const closeLightbox = () => {
+        lightbox.hidden = true;
+        lightboxImage.src = '';
+        body.classList.remove('dialog-open');
+        document.getElementById('site-header').inert = false;
+        setPageInert(false);
+        lightboxLastFocus?.focus();
+      };
 
-        // Staggered appearance on load
-        (function(){
-            window.addEventListener('load', () => {
-                document.querySelectorAll('.stagger').forEach(el => {
-                    el.style.opacity = 1;
-                });
-            });
-        })();
+      cards.forEach((card, index) => card.addEventListener('click', () => openLightbox(index)));
+      closeButton.addEventListener('click', closeLightbox);
+      prevButton.addEventListener('click', () => renderLightbox(currentIndex - 1));
+      nextButton.addEventListener('click', () => renderLightbox(currentIndex + 1));
 
-        // Lightbox behaviour
-        (function(){
-            const items = Array.from(document.querySelectorAll('.gallery-item'));
-            const lightbox = document.getElementById('lightbox');
-            const lbImg = document.getElementById('lb-img');
-            const lbClose = document.getElementById('lb-close');
-            const lbPrev = document.getElementById('lb-prev');
-            const lbNext = document.getElementById('lb-next');
-            let currentIndex = 0;
-            const srcs = items.map(i => i.getAttribute('src'));
+      lightbox.addEventListener('click', event => {
+        if (event.target === lightbox) closeLightbox();
+      });
 
-            function openAt(index){
-                currentIndex = (index + srcs.length) % srcs.length;
-                lbImg.src = srcs[currentIndex];
-                lightbox.classList.add('open');
-                lightbox.setAttribute('aria-hidden', 'false');
-            }
-            function close(){
-                lightbox.classList.remove('open');
-                lightbox.setAttribute('aria-hidden', 'true');
-            }
-            items.forEach((it, idx) => {
-                it.addEventListener('click', ()=> openAt(idx));
-            });
-            lbClose.addEventListener('click', close);
-            lbPrev.addEventListener('click', ()=> openAt(currentIndex - 1));
-            lbNext.addEventListener('click', ()=> openAt(currentIndex + 1));
-            lightbox.addEventListener('click', (e)=>{
-                if(e.target === lightbox) close();
-            });
-            document.addEventListener('keydown', (e)=>{
-                if(!lightbox.classList.contains('open')) return;
-                if(e.key === 'Escape') close();
-                if(e.key === 'ArrowLeft') openAt(currentIndex - 1);
-                if(e.key === 'ArrowRight') openAt(currentIndex + 1);
-            });
-        })();
+      document.addEventListener('keydown', event => {
+        if (lightbox.hidden) return;
+        if (event.key === 'Escape') closeLightbox();
+        if (event.key === 'ArrowLeft') renderLightbox(currentIndex - 1);
+        if (event.key === 'ArrowRight') renderLightbox(currentIndex + 1);
+        if (event.key === 'Tab') {
+          const focusable = [closeButton, prevButton, nextButton];
+          const current = focusable.indexOf(document.activeElement);
+          const next = event.shiftKey ? (current - 1 + focusable.length) % focusable.length : (current + 1) % focusable.length;
+          event.preventDefault();
+          focusable[next].focus();
+        }
+      });
 
-        // Initialize Swiper for reviews
-        (function(){
-            if(typeof Swiper !== 'undefined'){
-                new Swiper(".mySwiper", {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                    loop: true,
-                    autoplay: { delay: 5000, disableOnInteraction: false },
-                    pagination: { el: ".swiper-pagination", clickable: true },
-                    breakpoints: {
-                        768: { slidesPerView: 2 },
-                        1024: { slidesPerView: 3 }
-                    }
-                });
-
-                // Initialize gallery swiper
-                const galleryThumbs = new Swiper('.gallery-thumbs', {
-                    spaceBetween: 10,
-                    slidesPerView: 4,
-                    freeMode: true,
-                    watchSlidesProgress: true,
-                });
-                
-                const galleryTop = new Swiper('.gallery-swiper', {
-                    spaceBetween: 10,
-                    navigation: {
-                        nextEl: '.swiper-button-next',
-                        prevEl: '.swiper-button-prev',
-                    },
-                    thumbs: {
-                        swiper: galleryThumbs,
-                    },
-                });
-            }
-        })();
-
-        // Defensive: if images missing, show placeholders (optional)
-        (function(){
-            document.querySelectorAll('img').forEach(img=>{
-                img.addEventListener('error', ()=> {
-                    // small translucent placeholder
-                    img.style.background = 'linear-gradient(180deg,#f3f4f6,#e5e7eb)';
-                    img.style.objectFit = 'cover';
-                });
-            });
-        })();
-    </script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
